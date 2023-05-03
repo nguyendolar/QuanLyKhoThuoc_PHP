@@ -1,0 +1,18 @@
+- Màn đăng nhập:
++ Tên đăng nhập
++ Mật khẩu 
++ Quên mật khẩu 
+* Giao diện website: 
+- Bên trái là thanh menu các mục:
++ Quản lý nhân viên: Thêm mới nhân viên, Danh sách nhân viên
++ Quản lý sản phẩm: Thêm mới sản phẩm, Danh sách sản phẩm 
++ Quản lý thùng sản phẩm : thêm mới thùng (tên thùng,chọn sản phẩm cho thùng, số lượng sản phẩm, ngày sản xuất, ngày hết hạn), danh sách thùng
++ Quản lý phiếu nhập kho: Thêm mới phiếu nhập kho, Danh sách phiếu nhập kho 
++ Quản lý phiếu xuất kho: Thêm mới phiếu xuất kho, Danh sách phiếu xuất kho 
+- Bên phải là nội dung thông tin từng màn
+
+Luồng hệ thống:
+1. Login thành công 
+2. Nhập thông tin sản phẩm 
+3. Lập phiếu nhập kho, chọn thùng để nhập kho
+4. Lập phiếu xuất kho, chọn thùng đẻ xuất kho (hiển thị các thùng có ngày hết hạn gần nhất)
