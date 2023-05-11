@@ -22,14 +22,10 @@
 <?php include('inc/header.php')?>
     <div id="layoutSidenav">
     <?php include('inc/menu.php')?>
-        <div id="layoutSidenav_content">
+        <div id="layoutSidenav_content" style="background-image: url(https://maybanhang.net/wp-content/uploads/2020/02/banner-background-phan-mem-quan-ly-kho-1536x640.jpg); background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;">
             <main>
-                <div class="container-fluid px-4">
-
-    </div>
-    <img style="width : 1200px; height : 600px" src="https://leveler.vn/wp-content/uploads/2022/08/He-thong-quan-ly-kho-hang-WMS-scaled.jpg" />
-                
-                </div>
             </main>
             <?php include('inc/footer.php')?>
         </div>

@@ -34,6 +34,7 @@
                                         <th>STT</th>
                                         <th>Họ tên</th>
                                         <th>Email</th>
+                                        <th>Mật khẩu</th>
                                         <th>Số điện thoại</th>
                                         <th>Giới tính</th>
                                         <th>Ngày sinh</th>
@@ -43,7 +44,8 @@
                                 <tbody>
                                 <?php 
                                     $query = "SELECT *
-                                    FROM nhanvien
+                                    FROM nguoidung
+                                    WHere quyen_id = 2
                                     ORDER BY id DESC";
                                     $result = mysqli_query($connect, $query);
                                     $stt = 1;
@@ -53,6 +55,7 @@
                                         <td><?php echo $stt ?></td>
                                         <td><?php echo $arUser["hoten"] ?></td>
                                         <td><?php echo $arUser["email"] ?> </td>
+                                        <td><?php echo $arUser["matkhau"] ?> </td>
                                         <td><?php echo $arUser["sodienthoai"] ?></td>
                                         <td><?php echo $arUser["gioitinh"] ?> </td>
                                         <td><?php echo date("d-m-Y", strtotime($arUser["ngaysinh"])) ?></td>
@@ -107,6 +110,14 @@
                                                                 <input type="text" class="form-control" id="category-film" name="sdt" required>
                                                         </div>
                                                         <div class="col-6">
+                                                            <label for="category-film"
+                                                                class="col-form-label">Mật khẩu:</label>
+                                                                <input type="text" class="form-control" id="category-film" name="matkhau" required>
+                                                        </div>
+                                                        
+                                                        </div>
+                                                        <div class="row">
+                                                        <div class="col-12">
                                                             <label for="category-film"
                                                                 class="col-form-label">Địa chỉ:</label>
                                                                 <input type="text" class="form-control" id="category-film" name="diachi" required>

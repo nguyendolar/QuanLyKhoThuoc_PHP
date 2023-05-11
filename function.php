@@ -47,6 +47,9 @@ if(isset($_POST['addsp'])){
 if(isset($_POST['addnh'])){
     $thungsp = $_POST['thungsp'];
     $soluong = $_POST['soluong'];
+    $maphieu = $_POST['maphieu'];
+    $gia = $_POST['gia'];
+    $thanhtien = $gia * $soluong;
     // lấy thứ tự hiện tại trong kho
     $querylm = mysqli_query($connect, "Select * From phieunhapkho ORDER by id desc LIMIT 1");
     $row = mysqli_fetch_array($querylm);
@@ -78,8 +81,8 @@ if(isset($_POST['addnh'])){
       }
     }
     //
-    $query = "INSERT INTO phieunhapkho (thung_id, soluong, ke, hang, o) 
-    VALUES ( '{$thungsp}', '{$soluong}', '{$ke}', '{$hang}', '{$o}') ";
+    $query = "INSERT INTO phieunhapkho (thung_id, soluong, ke, hang, o, maphieu, gia, thanhtien, nguoidung_id) 
+    VALUES ( '{$thungsp}', '{$soluong}', '{$ke}', '{$hang}', '{$o}', '{$maphieu}', '{$gia}', '{$thanhtien}', '{$idnd}') ";
     $result = mysqli_query($connect, $query);
     if ($result) {
       $update = "UPDATE `thung` 
@@ -96,6 +99,9 @@ if(isset($_POST['addnh'])){
 if(isset($_POST['addxh'])){
     $thungsp = $_POST['thungsp'];
     $soluong = $_POST['soluong'];
+    $maphieu = $_POST['maphieu'];
+    $gia = $_POST['gia'];
+    $thanhtien = $gia * $soluong;
     //
     // lấy thứ tự hiện tại trong kho
     $querylm = mysqli_query($connect, "SELECT * FROM phieunhapkho WHERE thung_id ='{$thungsp}' AND trangthai = 0 LIMIT 1");
@@ -105,8 +111,8 @@ if(isset($_POST['addxh'])){
     $ke = $row["ke"];
     $hang = $row["hang"];
     //
-    $query = "INSERT INTO phieuxuatkho (thung_id, soluong, ke, hang, o) 
-    VALUES ( '{$thungsp}', '{$soluong}', '{$ke}', '{$hang}', '{$o}') ";
+    $query = "INSERT INTO phieuxuatkho (thung_id, soluong, ke, hang, o, maphieu, gia, thanhtien, nguoidung_id) 
+    VALUES ( '{$thungsp}', '{$soluong}', '{$ke}', '{$hang}', '{$o}', '{$maphieu}', '{$gia}', '{$thanhtien}', '{$idnd}') ";
     $result = mysqli_query($connect, $query);
     if ($result) {
       $updatenk = "UPDATE `phieunhapkho` 
@@ -133,8 +139,9 @@ if(isset($_POST['addnv'])){
     $gioitinh = $_POST['gioitinh'];
     $ngaysinh = $_POST['ngaysinh'];
     $diachi = $_POST['diachi'];
-    $query = "INSERT INTO nhanvien ( hoten, email, sodienthoai, ngaysinh, gioitinh, diachi) 
-    VALUES ( '{$hoten}', '{$email}', '{$sdt}', '{$ngaysinh}', '{$gioitinh}', '{$diachi}') ";
+    $matkhau  = $_POST['matkhau'];
+    $query = "INSERT INTO nguoidung ( hoten, email, sodienthoai, ngaysinh, gioitinh, diachi, matkhau, quyen_id) 
+    VALUES ( '{$hoten}', '{$email}', '{$sdt}', '{$ngaysinh}', '{$gioitinh}', '{$diachi}', '{$matkhau}', 2) ";
     $result = mysqli_query($connect, $query);
     if ($result) {
       header("Location: nhanvien.php?msg=1");
@@ -142,6 +149,27 @@ if(isset($_POST['addnv'])){
     else {
         header("Location: nhanvien.php?msg=2");
     }
+}
+//Cập nhật thông tin cá nhân
+if(isset($_POST['edittt'])){
+  $hoten = $_POST['hoten'];
+  $email  = $_POST['email'];
+  $matkhau  = $_POST['matkhau'];
+  $sdt = $_POST['sdt'];
+  $gioitinh = $_POST['gioitinh'];
+  $ngaysinh = $_POST['ngaysinh'];
+  $diachi = $_POST['diachi'];
+  $id  = $_POST['id'];
+  $query = "UPDATE `nguoidung` 
+  SET `hoten`='{$hoten}',`email`='{$email}',`sodienthoai`='{$sdt}',`gioitinh`='{$gioitinh}',`ngaysinh`='{$ngaysinh}', `diachi`='{$diachi}', `matkhau`='{$matkhau}'
+  WHERE `id`='{$id}'";
+  $result = mysqli_query($connect, $query);
+  if ($result) {
+      header("Location: thongtin.php?msg=1");
+  } 
+  else {
+      header("Location: thongtin.php?msg=2");
+  }
 }
 ?>
  

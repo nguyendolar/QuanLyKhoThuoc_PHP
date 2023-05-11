@@ -11,7 +11,7 @@ if (isset($_SESSION['taikhoanadmin'])) {
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Đăng nhập</title>
+        <title>Quên mật khẩu</title>
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     </head>
@@ -20,20 +20,9 @@ if (isset($_SESSION['taikhoanadmin'])) {
         echo "
                     <script>
                         function Redirect() {
-                        window.location = 'login.php';
+                        window.location = 'quenmk.php';
                         }
-                        alert('Sai tài khoản hoặc mật khẩu !') 
-                        Redirect()
-                    </script>
-                    ";
-    }
-    if (isset($_GET['msg'])) {
-        echo "
-                    <script>
-                        function Redirect() {
-                        window.location = 'login.php';
-                        }
-                        alert('Vui lòng kiểm tra Email !') 
+                        alert('Email không tồn tại trong hệ thống !') 
                         Redirect()
                     </script>
                     ";
@@ -54,16 +43,11 @@ if (isset($_SESSION['taikhoanadmin'])) {
                                         <form action="checklogin.php" method="POST">
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" id="inputEmail" type="email" placeholder="" name="email" />
-                                                <label for="inputEmail">Email</label>
+                                                <label for="inputEmail">Nhập Email để lấy lại mật khẩu</label>
                                             </div>
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputPassword" type="password" placeholder="" name="matkhau" />
-                                                <label for="inputPassword">Mật khẩu</label>
-                                            </div>
-                                            
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <button class="btn btn-primary" type="submit" name="login">Đăng nhập</button>
-                                                <a href="quenmk.php">Quên mật khẩu</button>
+                                                <button class="btn btn-primary" type="submit" name="quenmk">Gửi Email</button>
+                                                <a href="login.php">Trở lại đăng nhập</button>
                                             </div>
                                         </form>
                                     </div>

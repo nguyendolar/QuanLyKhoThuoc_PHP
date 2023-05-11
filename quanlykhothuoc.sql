@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 03, 2023 lúc 05:57 PM
+-- Thời gian đã tạo: Th5 11, 2023 lúc 05:51 PM
 -- Phiên bản máy phục vụ: 10.4.21-MariaDB
 -- Phiên bản PHP: 7.3.30
 
@@ -24,18 +24,27 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `nhanvien`
+-- Cấu trúc bảng cho bảng `nguoidung`
 --
 
-CREATE TABLE `nhanvien` (
+CREATE TABLE `nguoidung` (
   `id` int(11) NOT NULL,
   `hoten` varchar(500) NOT NULL,
   `email` varchar(500) NOT NULL,
   `sodienthoai` varchar(250) NOT NULL,
   `diachi` varchar(500) NOT NULL,
   `gioitinh` varchar(250) NOT NULL,
-  `ngaysinh` varchar(250) NOT NULL
+  `ngaysinh` varchar(250) NOT NULL,
+  `matkhau` varchar(500) NOT NULL,
+  `quyen_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `nguoidung`
+--
+
+INSERT INTO `nguoidung` (`id`, `hoten`, `email`, `sodienthoai`, `diachi`, `gioitinh`, `ngaysinh`, `matkhau`, `quyen_id`) VALUES
+(1, 'Quản lý', 'quanly@gmail.com', '0357345642', 'Hà Nội', 'Nữ', '1996-04-05', '123456', 1);
 
 -- --------------------------------------------------------
 
@@ -51,7 +60,11 @@ CREATE TABLE `phieunhapkho` (
   `ke` int(11) NOT NULL,
   `hang` int(11) NOT NULL,
   `o` int(11) NOT NULL,
-  `trangthai` int(11) NOT NULL DEFAULT 0
+  `trangthai` int(11) NOT NULL DEFAULT 0,
+  `maphieu` varchar(250) NOT NULL,
+  `nguoidung_id` int(11) NOT NULL,
+  `gia` int(11) NOT NULL,
+  `thanhtien` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -67,28 +80,31 @@ CREATE TABLE `phieuxuatkho` (
   `ngayxuat` date NOT NULL DEFAULT current_timestamp(),
   `ke` int(11) NOT NULL,
   `hang` int(11) NOT NULL,
-  `o` int(11) NOT NULL
+  `o` int(11) NOT NULL,
+  `maphieu` varchar(250) NOT NULL,
+  `nguoidung_id` int(11) NOT NULL,
+  `gia` int(11) NOT NULL,
+  `thanhtien` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `quanly`
+-- Cấu trúc bảng cho bảng `quyen`
 --
 
-CREATE TABLE `quanly` (
+CREATE TABLE `quyen` (
   `id` int(11) NOT NULL,
-  `hoten` varchar(250) NOT NULL,
-  `taikhoan` varchar(250) NOT NULL,
-  `matkhau` varchar(250) NOT NULL
+  `tenquyen` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `quanly`
+-- Đang đổ dữ liệu cho bảng `quyen`
 --
 
-INSERT INTO `quanly` (`id`, `hoten`, `taikhoan`, `matkhau`) VALUES
-(1, 'Quản trị viên', 'quanly', '123456');
+INSERT INTO `quyen` (`id`, `tenquyen`) VALUES
+(1, 'Quản lý'),
+(2, 'Nhân viên');
 
 -- --------------------------------------------------------
 
@@ -124,9 +140,9 @@ CREATE TABLE `thung` (
 --
 
 --
--- Chỉ mục cho bảng `nhanvien`
+-- Chỉ mục cho bảng `nguoidung`
 --
-ALTER TABLE `nhanvien`
+ALTER TABLE `nguoidung`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -144,9 +160,9 @@ ALTER TABLE `phieuxuatkho`
   ADD KEY `lien_ket_02` (`thung_id`);
 
 --
--- Chỉ mục cho bảng `quanly`
+-- Chỉ mục cho bảng `quyen`
 --
-ALTER TABLE `quanly`
+ALTER TABLE `quyen`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -167,40 +183,40 @@ ALTER TABLE `thung`
 --
 
 --
--- AUTO_INCREMENT cho bảng `nhanvien`
+-- AUTO_INCREMENT cho bảng `nguoidung`
 --
-ALTER TABLE `nhanvien`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `nguoidung`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `phieunhapkho`
 --
 ALTER TABLE `phieunhapkho`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT cho bảng `phieuxuatkho`
 --
 ALTER TABLE `phieuxuatkho`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT cho bảng `quanly`
+-- AUTO_INCREMENT cho bảng `quyen`
 --
-ALTER TABLE `quanly`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `quyen`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `sanpham`
 --
 ALTER TABLE `sanpham`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT cho bảng `thung`
 --
 ALTER TABLE `thung`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Các ràng buộc cho các bảng đã đổ

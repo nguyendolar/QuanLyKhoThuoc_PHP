@@ -16,3 +16,25 @@ Luồng hệ thống:
 2. Nhập thông tin sản phẩm 
 3. Lập phiếu nhập kho, chọn thùng để nhập kho
 4. Lập phiếu xuất kho, chọn thùng đẻ xuất kho (hiển thị các thùng có ngày hết hạn gần nhất)
+---------------------
+Quên mk//
+Background 
+Quản lý kho nhà thuốc Chu Mai//
+Bảng điều kiển - Trang chủ
+Thùng - Thùng sản phẩm//
+Nhập//
+Xuất//
+->
+Thêm mã phiếu (nhập tay)
+-------------------
+Thêm phân quyền//
+Nhân viên, Quản trị//
+Quên mk gửi lại mk hiện tại qua mail//
+Thêm cập nhật thông tin cá nhân//
+Đổi mật khẩu//
+----
+Khi nhập và xuất theo 50 thùng sp thì a cho e thêm trường giá + thành tiền 
+Giá nhập 
+Giá xuất 
+Giá ở đây là giá 1 thùng 
+Thành tiền: giá 1 thùng * 50
